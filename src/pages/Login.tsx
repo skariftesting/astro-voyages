@@ -68,9 +68,9 @@ const Login = () => {
 
       // Navigate to dashboard after successful login
       navigate('/dashboard');
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast.error('Login failed', {
-        description: error.message || 'Please check your credentials and try again',
+        description: error instanceof Error ? error.message : 'Please check your credentials and try again',
       });
     } finally {
       setIsLoading(false);

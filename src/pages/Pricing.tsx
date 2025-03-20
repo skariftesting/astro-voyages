@@ -6,7 +6,7 @@ import PricingCard from '@/components/PricingCard';
 import { generateStars } from '@/utils/animations';
 
 const Pricing = () => {
-  const [stars, setStars] = useState<any[]>([]);
+  const [stars, setStars] = useState<{ x: number; y: number; size: 'small' | 'medium' | 'large'; animationDelay: string; color: string }[]>([]);
 
   useEffect(() => {
     setStars(generateStars(100));

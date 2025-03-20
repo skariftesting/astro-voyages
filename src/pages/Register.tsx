@@ -61,9 +61,9 @@ const Register = () => {
 
       // Navigate to login page after successful registration
       navigate('/login');
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast.error('Registration failed', {
-        description: error.message || 'Please try again later',
+        description: error instanceof Error ? error.message : 'Please try again later',
       });
     } finally {
       setIsLoading(false);

@@ -84,8 +84,8 @@ const Booking = () => {
   const { destinationId } = useParams();
   const [searchParams] = useSearchParams();
   const selectedClass = searchParams.get('class');
-  const [stars, setStars] = useState<any[]>([]);
-  const [destination, setDestination] = useState<any>(null);
+  const [stars, setStars] = useState<{ x: number; y: number; size: 'small' | 'medium' | 'large'; animationDelay: string; color: string }[]>([]);
+  const [destination, setDestination] = useState<typeof destinationsData[0] | null>(null);
 
   useEffect(() => {
     setStars(generateStars(100));

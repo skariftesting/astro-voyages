@@ -18,7 +18,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 const Dashboard = () => {
-  const [stars, setStars] = useState<any[]>([]);
+  const [stars, setStars] = useState<{ x: number; y: number; size: 'small' | 'medium' | 'large'; animationDelay: string; color: string }[]>([]);
 
   useEffect(() => {
     setStars(generateStars(100));

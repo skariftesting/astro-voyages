@@ -116,7 +116,7 @@ const allDestinations = [
 ];
 
 const Destinations = () => {
-  const [stars, setStars] = useState<any[]>([]);
+  const [stars, setStars] = useState<{ x: number; y: number; size: 'small' | 'medium' | 'large'; animationDelay: string; color: string }[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('all');
   const [sortBy, setSortBy] = useState('default');

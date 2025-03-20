@@ -48,7 +48,7 @@ const featuredDestinations = [
 ];
 
 const Index = () => {
-  const [stars, setStars] = useState<any[]>([]);
+  const [stars, setStars] = useState<{ x: number; y: number; size: 'small' | 'medium' | 'large'; animationDelay: string; color: string }[]>([]);
 
   useEffect(() => {
     setStars(generateStars(100));

@@ -4,8 +4,17 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { generateStars } from '@/utils/animations';
 
+// Define the Star type based on the return type of generateStars
+type Star = {
+  x: number;
+  y: number;
+  size: 'small' | 'medium' | 'large';
+  animationDelay: string;
+  color: string;
+};
+
 const About = () => {
-  const [stars, setStars] = useState<any[]>([]);
+  const [stars, setStars] = useState<Star[]>([]);
 
   useEffect(() => {
     setStars(generateStars(100));

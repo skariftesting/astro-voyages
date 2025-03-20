@@ -163,8 +163,9 @@ export const textCrawlAnimation = {
 // Changed to a function that returns a HOC function instead of using JSX directly
 import React from 'react';
 
-export const createPageTransition = (Component: React.ComponentType<any>) => {
-  return function PageTransitionWrapper(props: any) {
+// Define a generic type parameter to replace 'any' for component props
+export const createPageTransition = <P extends Record<string, unknown>>(Component: React.ComponentType<P>) => {
+  return function PageTransitionWrapper(props: P) {
     // Using React.createElement instead of JSX syntax
     return React.createElement(
       'div',
