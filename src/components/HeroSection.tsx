@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronDown } from 'lucide-react';
@@ -39,7 +38,7 @@ const HeroSection = () => {
         
         <h1 className="section-title animate-slide-down" style={{ animationDelay: '0.2s' }}>
           <span className="text-gradient">Beyond Earth, Beyond Limits</span><br />
-          <span className="text-space-white font-light">only in Dubai</span>
+          <span className="text-space-white font-light">Only in Dubai, Where Stars Permit!</span>
         </h1>
         
         <p className="section-subtitle mx-auto animate-slide-down" style={{ animationDelay: '0.4s' }}>
