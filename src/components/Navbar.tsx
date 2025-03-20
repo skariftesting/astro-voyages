@@ -1,13 +1,15 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, User } from 'lucide-react';
+import { Menu, X, User, LogOut } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { useAuth } from '@/contexts/AuthContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { isAuthenticated, user, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,17 @@ const Navbar = () => {
     { name: 'Pricing', path: '/pricing' },
     { name: 'About', path: '/about' },
   ];
+
+  // Add Dashboard link if user is authenticated
+  if (isAuthenticated) {
+    navLinks.push({ name: 'Dashboard', path: '/dashboard' });
+  }
+
+  const handleSignOut = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    await signOut();
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <header 
@@ -57,16 +70,35 @@ const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/login">
-              <Button variant="ghost" size="sm" className="text-space-light-gray hover:text-space-white hover:bg-space-light-blue/20">
-                Sign In
-              </Button>
-            </Link>
-            <Link to="/register">
-              <Button size="sm" className="bg-space-cyan text-space-blue hover:bg-space-cyan/90">
-                Get Started
-              </Button>
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <div className="text-space-light-gray text-sm mr-2">
+                  {user?.email}
+                </div>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  className="text-space-light-gray hover:text-space-white hover:bg-space-light-blue/20"
+                  onClick={handleSignOut}
+                >
+                  <LogOut size={16} className="mr-2" />
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <>
+                <Link to="/login">
+                  <Button variant="ghost" size="sm" className="text-space-light-gray hover:text-space-white hover:bg-space-light-blue/20">
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to="/register">
+                  <Button size="sm" className="bg-space-cyan text-space-blue hover:bg-space-cyan/90">
+                    Get Started
+                  </Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Navigation Toggle */}
@@ -100,16 +132,30 @@ const Navbar = () => {
                 </Link>
               ))}
               <div className="flex space-x-4 pt-4 border-t border-space-light-blue/30">
-                <Link to="/login" className="w-1/2" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button variant="ghost" size="sm" className="w-full text-space-light-gray hover:text-space-white hover:bg-space-light-blue/20">
-                    Sign In
+                {isAuthenticated ? (
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="w-full text-space-light-gray hover:text-space-white hover:bg-space-light-blue/20"
+                    onClick={handleSignOut}
+                  >
+                    <LogOut size={16} className="mr-2" />
+                    Sign Out
                   </Button>
-                </Link>
-                <Link to="/register" className="w-1/2" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Button size="sm" className="w-full bg-space-cyan text-space-blue hover:bg-space-cyan/90">
-                    Get Started
-                  </Button>
-                </Link>
+                ) : (
+                  <>
+                    <Link to="/login" className="w-1/2" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button variant="ghost" size="sm" className="w-full text-space-light-gray hover:text-space-white hover:bg-space-light-blue/20">
+                        Sign In
+                      </Button>
+                    </Link>
+                    <Link to="/register" className="w-1/2" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Button size="sm" className="w-full bg-space-cyan text-space-blue hover:bg-space-cyan/90">
+                        Get Started
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </nav>
           </div>
