@@ -44,7 +44,7 @@ const PricingCard = ({
         <p className="mt-2 text-space-gray text-sm">{description}</p>
         
         <div className="mt-4 mb-6">
-          <span className="text-3xl font-bold text-space-white">${price.toLocaleString()}</span>
+          <span className="text-3xl font-bold text-space-white">د.إ {price.toLocaleString()}</span>
           <span className="text-space-gray text-sm ml-1">/ person</span>
         </div>
         

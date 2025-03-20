@@ -46,10 +46,11 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center flex-col">
             <span className="text-space-white font-display text-xl md:text-2xl font-bold tracking-tight">
               STARPORT<span className="text-space-cyan">DUBAI</span>
             </span>
+            <span className="text-space-light-gray text-xs italic mt-1 hidden md:block"></span>
           </Link>
 
           {/* Desktop Navigation */}

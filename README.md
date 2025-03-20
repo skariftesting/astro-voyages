@@ -1,53 +1,128 @@
-# Welcome to your Lovable project
+# Astro Voyages 🚀
 
-## Project info
+Astro Voyages is a futuristic space tourism web application that allows users to explore and book journeys to various celestial destinations. Built with React, Vite, and Supabase, this application provides a seamless experience for space enthusiasts to plan their next interstellar adventure.
 
-**URL**: https://lovable.dev/projects/3aeea300-69d0-4bb8-bcb3-ba3764e4698b
+![Astro Voyages](public/og-image.png)
 
-## How can I edit this code?
+## 🌟 Features
 
-There are several ways of editing your application.
+- **Interactive Destination Exploration**: Browse through various space destinations with detailed information
+- **User Authentication**: Secure login and registration system powered by Supabase
+- **Booking System**: Select and book your preferred space travel package
+- **User Dashboard**: Track your bookings and manage your profile
+- **Responsive Design**: Fully responsive UI that works on all devices
 
-**Use Lovable**
+## 🛠️ Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3aeea300-69d0-4bb8-bcb3-ba3764e4698b) and start prompting.
+- **Frontend**: React, TypeScript, Tailwind CSS, Shadcn UI
+- **Build Tool**: Vite
+- **Backend/Auth**: Supabase
+- **State Management**: React Context API, TanStack Query
+- **Routing**: React Router
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js (v16 or higher)
+- npm or yarn
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+1. Clone the repository
+   ```sh
+   git clone https://github.com/yourusername/astro-voyages.git
+   cd astro-voyages
+   ```
+
+2. Install dependencies
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Set up environment variables
+   - Copy `.env.example` to `.env`
+   ```sh
+   cp .env.example .env
+   ```
+   - Update the `.env` file with your Supabase credentials
+
+4. Start the development server
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+## 🌐 Deployment
+
+### Building for Production
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm run build
+# or
+yarn build
 ```
 
-**Edit a file directly in GitHub**
+### Deploying to Vercel
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. Push your code to GitHub
+2. Connect your GitHub repository to Vercel
+3. Configure the environment variables in Vercel dashboard
+4. Deploy!
 
-**Use GitHub Codespaces**
+### Deploying to Netlify
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
+1. Push your code to GitHub
+2. Connect your GitHub repository to Netlify
+3. Configure the build settings:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+4. Add environment variables in Netlify dashboard
+5. Deploy!
+
+## 🧪 Development
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+
+## 📝 Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+
+```
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgements
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Supabase](https://supabase.io/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Shadcn UI](https://ui.shadcn.com/)
+- [React Router](https://reactrouter.com/)
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
 ## What technologies are used for this project?

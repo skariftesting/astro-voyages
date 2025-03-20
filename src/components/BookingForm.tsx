@@ -241,7 +241,7 @@ const BookingForm = ({
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="font-bold text-space-white">${classOption.price.toLocaleString()}</p>
+                      <p className="font-bold text-space-white">د.إ {classOption.price.toLocaleString()}</p>
                       <p className="text-xs text-space-light-gray">per person</p>
                     </div>
                   </div>
@@ -287,7 +287,7 @@ const BookingForm = ({
               <div className="glass-panel p-4">
                 <div className="flex justify-between items-center">
                   <h4 className="text-sm text-space-light-gray">Price per person</h4>
-                  <p className="text-space-white font-medium">${selectedClassPrice.toLocaleString()}</p>
+                  <p className="text-space-white font-medium">د.إ {selectedClassPrice.toLocaleString()}</p>
                 </div>
                 <div className="flex justify-between items-center mt-2">
                   <h4 className="text-sm text-space-light-gray">Number of passengers</h4>
@@ -296,7 +296,7 @@ const BookingForm = ({
                 <div className="border-t border-space-light-blue/30 my-2 pt-2">
                   <div className="flex justify-between items-center">
                     <h4 className="font-medium text-space-white">Total Price</h4>
-                    <p className="text-space-cyan font-bold text-lg">${totalPrice.toLocaleString()}</p>
+                    <p className="text-space-cyan font-bold text-lg">د.إ {totalPrice.toLocaleString()}</p>
                   </div>
                 </div>
               </div>

@@ -2,7 +2,18 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { generateStars, generateNebula, floatAnimation, pulseGlowAnimation, rotateAnimation, scaleAnimation, shimmerAnimation } from '@/utils/animations';
+import { 
+  generateStars, 
+  generateNebula, 
+  generateHyperspaceStars,
+  floatAnimation, 
+  pulseGlowAnimation, 
+  rotateAnimation, 
+  scaleAnimation, 
+  shimmerAnimation,
+  lightsaberIgniteAnimation,
+  saberGlowAnimation
+} from '@/utils/animations';
 import { motion } from 'framer-motion';
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from '@/hooks/use-toast';
@@ -10,12 +21,21 @@ import { toast } from '@/hooks/use-toast';
 const HeroSection = () => {
   const [stars, setStars] = useState<any[]>([]);
   const [nebulae, setNebulae] = useState<any[]>([]);
+  const [hyperspaceStars, setHyperspaceStars] = useState<any[]>([]);
+  const [showHyperspace, setShowHyperspace] = useState(false);
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
-    setStars(generateStars(200));
+    setStars(generateStars(300)); // More stars for space feel
     setNebulae(generateNebula(4));
+    setHyperspaceStars(generateHyperspaceStars(50));
+    
+    // Show hyperspace effect on initial load
+    setShowHyperspace(true);
+    const timer = setTimeout(() => setShowHyperspace(false), 2000);
+    
+    return () => clearTimeout(timer);
   }, []);
 
   const handleBookingClick = (e: React.MouseEvent) => {
@@ -65,6 +85,38 @@ const HeroSection = () => {
         />
       ))}
 
+      {/* Hyperspace effect */}
+      {showHyperspace && (
+        <div className="fixed inset-0 z-20 overflow-hidden">
+          <div className="absolute inset-0 bg-hyperspace">
+            {hyperspaceStars.map((star, i) => (
+              <motion.div
+                key={i}
+                className="absolute bg-white"
+                style={{
+                  left: `${star.x}%`,
+                  top: `${star.y}%`,
+                  height: '2px',
+                  width: '0',
+                  transformOrigin: 'left center',
+                  transform: `rotate(${star.angle}deg)`,
+                  animationDelay: star.delay
+                }}
+                animate={{
+                  width: ['0px', `${star.length}px`],
+                  opacity: [0, 1, 0],
+                  x: [0, star.length * 2]
+                }}
+                transition={{
+                  duration: 2,
+                  ease: "easeOut"
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+      
       {/* Content */}
       <div className="z-10 max-w-5xl mx-auto mt-16 md:mt-0">
         <motion.div 
@@ -73,8 +125,8 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="bg-space-cyan/10 text-space-cyan px-4 py-1.5 rounded-full text-xs md:text-sm font-medium inline-block mb-6 animate-glow shimmer">
-            STARPORT DUBAI
+          <span className="bg-space-saber-blue/10 text-space-white px-4 py-1.5 rounded-md text-xs md:text-sm font-medium inline-block mb-6 animate-saber-glow">
+          Beyond Earth, Beyond Limits, only in Dubai, where stars permit !
           </span>
         </motion.div>
         
@@ -84,8 +136,8 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          <span className="text-gradient">Beyond Earth, Beyond Limits</span><br />
-          <span className="text-space-white font-light">Only in Dubai, Where Stars Permit!</span>
+          <span className="text-gradient">A Journey to the Stars</span><br />
+          <span className="text-space-white font-light">In a Galaxy Not So Far Away</span>
         </motion.h1>
         
         <motion.p 
@@ -105,15 +157,29 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
           <Link to="/destinations">
-            <Button className="primary-button w-60 sm:w-auto flex items-center gap-2 group animate-float">
-              Explore Destinations
-              <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
-            </Button>
+            <div className="relative">
+              <Button className="primary-button w-60 sm:w-auto flex items-center gap-2 group">
+                Explore Destinations
+                <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+              </Button>
+              <motion.div 
+                className="absolute -bottom-1 left-0 h-1 bg-space-saber-blue w-0"
+                animate={lightsaberIgniteAnimation}
+                style={{boxShadow: '0 0 10px 2px #4bd5ee'}}
+              />
+            </div>
           </Link>
           <Link to="/booking" onClick={handleBookingClick}>
-            <Button variant="outline" className="outlined-button w-60 sm:w-auto animate-float" style={{ animationDelay: '0.2s' }}>
-              Book Your Flight
-            </Button>
+            <div className="relative">
+              <Button variant="outline" className="outlined-button w-60 sm:w-auto" style={{ animationDelay: '0.2s' }}>
+                Book Your Journey
+              </Button>
+              <motion.div 
+                className="absolute -bottom-1 left-0 h-1 bg-space-white w-0"
+                animate={lightsaberIgniteAnimation}
+                style={{boxShadow: '0 0 10px 2px #ffe81f', animationDelay: '0.3s'}}
+              />
+            </div>
           </Link>
         </motion.div>
         

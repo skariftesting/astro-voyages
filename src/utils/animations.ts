@@ -1,7 +1,8 @@
-export const generateStars = (count: number = 150): { x: number; y: number; size: 'small' | 'medium' | 'large'; animationDelay: string; color: string }[] => {
+export const generateStars = (count: number = 200): { x: number; y: number; size: 'small' | 'medium' | 'large'; animationDelay: string; color: string }[] => {
   return Array.from({ length: count }, (_, i) => {
     const size = Math.random() > 0.7 ? 'large' : Math.random() > 0.4 ? 'medium' : 'small';
-    const colors = ['#ffffff', '#b3e5fc', '#e3f2fd', '#bbdefb', '#e1f5fe', '#b2ebf2'];
+    // Use more white stars for Star Wars theme
+    const colors = ['#ffffff', '#ffffff', '#ffffff', '#ffe81f', '#e1f5fe', '#b2ebf2'];
     return {
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -13,12 +14,30 @@ export const generateStars = (count: number = 150): { x: number; y: number; size
 };
 
 export const generateNebula = (count: number = 3): { x: number; y: number; size: number; color: string; blur: number }[] => {
+  // Star Wars themed colors - blues, reds, and purples
+  const colors = [
+    'rgba(75, 213, 238, 0.1)',  // Blue (lightsaber blue)
+    'rgba(255, 45, 45, 0.1)',   // Red (lightsaber red)
+    'rgba(78, 91, 148, 0.1)',   // Purple (space)
+    'rgba(255, 232, 31, 0.1)',  // Yellow (Star Wars yellow)
+  ];
+  
   return Array.from({ length: count }, () => ({
     x: Math.random() * 100,
     y: Math.random() * 100,
     size: Math.random() * 300 + 200,
-    color: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.1)`,
+    color: colors[Math.floor(Math.random() * colors.length)],
     blur: Math.random() * 100 + 50
+  }));
+};
+
+export const generateHyperspaceStars = (count: number = 50): { x: number; y: number; length: number; angle: number; delay: string }[] => {
+  return Array.from({ length: count }, () => ({
+    x: 50 + (Math.random() * 40 - 20),  // Centered with some variation
+    y: 50 + (Math.random() * 40 - 20),  // Centered with some variation
+    length: Math.random() * 100 + 50,   // Length of the hyperspace star
+    angle: Math.random() * 360,         // Random angle
+    delay: `${Math.random() * 2}s`      // Random delay
   }));
 };
 
@@ -101,6 +120,42 @@ export const shimmerAnimation = {
   transition: {
     duration: 2,
     repeat: Infinity,
+    ease: "linear"
+  }
+};
+
+// Star Wars specific animations
+export const lightsaberIgniteAnimation = {
+  width: [0, '100%'],
+  opacity: [0.7, 1],
+  transition: {
+    duration: 0.6,
+    ease: "easeOut"
+  }
+};
+
+export const saberGlowAnimation = {
+  boxShadow: ['0 0 5px 2px currentColor', '0 0 15px 5px currentColor', '0 0 5px 2px currentColor'],
+  transition: {
+    duration: 1.5,
+    repeat: Infinity,
+    ease: "easeInOut"
+  }
+};
+
+export const hyperspaceJumpAnimation = {
+  scale: [1, 1.5, 3],
+  opacity: [0, 0.8, 0],
+  transition: {
+    duration: 2,
+    ease: "easeInOut"
+  }
+};
+
+export const textCrawlAnimation = {
+  y: ['100%', '-100%'],
+  transition: {
+    duration: 60,
     ease: "linear"
   }
 };

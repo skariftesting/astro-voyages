@@ -91,7 +91,7 @@ const DestinationCard = ({
         <div className="flex items-center justify-between mt-2">
           <div>
             <p className="text-xs text-space-light-gray">Starting from</p>
-            <p className="text-xl font-bold text-space-white">${price.toLocaleString()}</p>
+            <p className="text-xl font-bold text-space-white">د.إ {price.toLocaleString()}</p>
           </div>
           
           <Link to={`/booking/${id}`} onClick={handleBookingClick}>

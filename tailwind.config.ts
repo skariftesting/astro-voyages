@@ -64,16 +64,21 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
         space: {
-          'blue': '#0a192f',
-          'dark-blue': '#020c1b',
-          'light-blue': '#112240',
-          'purple': '#543864',
-          'pink': '#ff6e6c',
-          'cyan': '#64ffda',
-          'white': '#e6f1ff',
-          'gray': '#8892b0',
-          'light-gray': '#a8b2d1',
-          'lightest-gray': '#ccd6f6'
+          'blue': '#000000',
+          'dark-blue': '#0a0a0a',
+          'light-blue': '#1a1a1a',
+          'purple': '#4e5b94',
+          'pink': '#ff2d2d',
+          'cyan': '#4bd5ee',
+          'white': '#ffe81f',
+          'gray': '#8d8d8d',
+          'light-gray': '#c8c8c8',
+          'lightest-gray': '#e6e6e6',
+          'saber-blue': '#4bd5ee',
+          'saber-red': '#ff2d2d',
+          'saber-green': '#4cd964',
+          'empire': '#bb0a1e',
+          'rebel': '#ff7b00'
         }
 			},
 			borderRadius: {
@@ -125,6 +130,27 @@ export default {
         'star-twinkle': {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0.5' }
+        },
+        'lightsaber-ignite': {
+          '0%': { width: '0%', opacity: '0.7' },
+          '100%': { width: '100%', opacity: '1' }
+        },
+        'text-crawl': {
+          '0%': { transform: 'translateY(100%)', opacity: '0' },
+          '10%': { transform: 'translateY(70%)', opacity: '1' },
+          '90%': { transform: 'translateY(-70%)', opacity: '1' },
+          '100%': { transform: 'translateY(-100%)', opacity: '0' }
+        },
+        'hyperspace-jump': {
+          '0%': { transform: 'scale(1)', opacity: '0' },
+          '10%': { transform: 'scale(1.2)', opacity: '0.3' },
+          '50%': { transform: 'scale(1.5)', opacity: '0.8' },
+          '90%': { transform: 'scale(2.5)', opacity: '0.3' },
+          '100%': { transform: 'scale(3)', opacity: '0' }
+        },
+        'saber-glow': {
+          '0%, 100%': { boxShadow: '0 0 5px 2px currentColor' },
+          '50%': { boxShadow: '0 0 15px 5px currentColor' }
         }
 			},
 			animation: {
@@ -138,7 +164,11 @@ export default {
         'slide-in-right': 'slide-in-right 0.6s ease-out',
         'slide-in-left': 'slide-in-left 0.6s ease-out',
         'scale-in': 'scale-in 0.5s ease-out',
-        'star-twinkle': 'star-twinkle 3s ease-in-out infinite'
+        'star-twinkle': 'star-twinkle 3s ease-in-out infinite',
+        'lightsaber-ignite': 'lightsaber-ignite 0.6s ease-out forwards',
+        'text-crawl': 'text-crawl 60s linear',
+        'hyperspace-jump': 'hyperspace-jump 2s ease-in-out',
+        'saber-glow': 'saber-glow 1.5s ease-in-out infinite'
 			},
       fontFamily: {
         'sans': ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
@@ -149,9 +179,13 @@ export default {
         'blur': 'blur(10px)'
       },
       backgroundImage: {
-        'space-gradient': 'linear-gradient(to bottom, #020c1b, #0a192f, #112240)',
-        'space-radial': 'radial-gradient(circle at center, #112240, #0a192f, #020c1b)',
-        'aurora': 'linear-gradient(to right, rgba(100, 255, 218, 0.1), rgba(255, 110, 108, 0.1), rgba(84, 56, 100, 0.1))'
+        'space-gradient': 'linear-gradient(to bottom, #000000, #0a0a0a, #1a1a1a)',
+        'space-radial': 'radial-gradient(circle at center, #1a1a1a, #0a0a0a, #000000)',
+        'aurora': 'linear-gradient(to right, rgba(75, 213, 238, 0.1), rgba(255, 45, 45, 0.1), rgba(78, 91, 148, 0.1))',
+        'star-wars': 'linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7))',
+        'lightsaber-blue': 'linear-gradient(90deg, #4bd5ee, #ffffff)',
+        'lightsaber-red': 'linear-gradient(90deg, #ff2d2d, #ffffff)',
+        'hyperspace': 'radial-gradient(ellipse at center, #ffffff 0%, rgba(255, 255, 255, 0) 70%)'
       }
 		}
 	},

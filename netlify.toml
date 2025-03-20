@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  # Use existing Supabase credentials
+  VITE_SUPABASE_URL = "https://hshpomayeppqlgsvozxl.supabase.co"
+  VITE_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhzaHBvbWF5ZXBwcWxnc3ZvenhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI0NjQ2MjIsImV4cCI6MjA1ODA0MDYyMn0.1SIghcgd5A9DFvCgu0UWAUMUG3-HOOkxqW6VfgdcVhw"
+
+# Handle SPA routing for React Router
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://hshpomayeppqlgsvozxl.supabase.co;"
