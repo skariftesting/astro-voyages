@@ -37,6 +37,16 @@ const HeroSection = () => {
     
     return () => clearTimeout(timer);
   }, []);
+  
+  // Force hide hyperspace effect after component mounts
+  useEffect(() => {
+    // Ensure hyperspace is hidden after a delay
+    const forceHideTimer = setTimeout(() => {
+      setShowHyperspace(false);
+    }, 3000);
+    
+    return () => clearTimeout(forceHideTimer);
+  }, []);
 
   const handleBookingClick = (e: React.MouseEvent) => {
     if (!isAuthenticated) {
@@ -87,7 +97,7 @@ const HeroSection = () => {
 
       {/* Hyperspace effect */}
       {showHyperspace && (
-        <div className="fixed inset-0 z-20 overflow-hidden">
+        <div className="absolute inset-0 z-10 overflow-hidden">
           <div className="absolute inset-0 bg-hyperspace">
             {hyperspaceStars.map((star, i) => (
               <motion.div
