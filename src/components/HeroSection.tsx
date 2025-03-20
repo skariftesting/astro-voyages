@@ -104,7 +104,7 @@ const HeroSection = () => {
 
       {/* Hyperspace effect */}
       {showHyperspace && (
-        <div className="absolute inset-0 z-10 overflow-hidden">
+        <div className="absolute inset-0 z-10 overflow-hidden" style={{ pointerEvents: 'none' }}>
           <div className="absolute inset-0 bg-hyperspace opacity-80">
             {hyperspaceStars.map((star, i) => (
               <motion.div
@@ -135,7 +135,7 @@ const HeroSection = () => {
       )}
       
       {/* Content */}
-      <div className="z-20 max-w-5xl mx-auto mt-16 md:mt-0">
+      <div className="z-30 relative max-w-5xl mx-auto mt-16 md:mt-0">
         <motion.div 
           className="animate-fade-in"
           initial={{ opacity: 0, y: 20 }}
