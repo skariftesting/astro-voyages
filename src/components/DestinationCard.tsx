@@ -1,7 +1,9 @@
-
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ChevronRight, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/contexts/AuthContext';
+import { toast } from '@/hooks/use-toast';
 
 interface DestinationCardProps {
   id: string;
@@ -26,6 +28,21 @@ const DestinationCard = ({
   distance,
   travelTime
 }: DestinationCardProps) => {
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  const handleBookingClick = (e: React.MouseEvent) => {
+    if (!isAuthenticated) {
+      e.preventDefault();
+      toast({
+        title: "Authentication Required",
+        description: "Please log in to book your space journey.",
+        variant: "destructive",
+      });
+      navigate('/login');
+    }
+  };
+
   return (
     <div className={`glass-panel overflow-hidden card-hover ${featured ? 'border-space-cyan/30' : ''}`}>
       <div className="relative w-full h-48 overflow-hidden">
@@ -77,7 +94,7 @@ const DestinationCard = ({
             <p className="text-xl font-bold text-space-white">${price.toLocaleString()}</p>
           </div>
           
-          <Link to={`/booking/${id}`}>
+          <Link to={`/booking/${id}`} onClick={handleBookingClick}>
             <Button variant="ghost" className="text-space-cyan hover:text-space-cyan hover:bg-space-cyan/10 p-2 h-auto">
               <span className="flex items-center">
                 Book Now

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Calendar as CalendarIcon, Users, CheckCircle2, ChevronRight } from 'lucide-react';
 import { format } from 'date-fns';
@@ -18,6 +17,8 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { toast } from '@/hooks/use-toast';
+import { useAuth } from '@/contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 interface BookingFormProps {
   destinationId?: string;
@@ -34,6 +35,8 @@ const BookingForm = ({
   const [passengers, setPassengers] = useState('1');
   const [classType, setClassType] = useState(selectedClass || '');
   const [step, setStep] = useState(1);
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   
   const destinations = [
     { id: 'orbital-hotel', name: 'Orbital Luxury Hotel' },
@@ -51,6 +54,16 @@ const BookingForm = ({
   ];
   
   const handleContinue = () => {
+    if (!isAuthenticated) {
+      toast({
+        title: "Authentication Required",
+        description: "Please log in to complete your booking.",
+        variant: "destructive",
+      });
+      navigate('/login');
+      return;
+    }
+
     if (step === 1) {
       if (!destinationId && !date) {
         toast({
