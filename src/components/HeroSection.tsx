@@ -103,9 +103,9 @@ const HeroSection = () => {
         />
       ))}
 
-      {/* Hyperspace effect - setting z-index to 5 to ensure it stays behind content */}
+      {/* Hyperspace effect - setting z-index to 3 to ensure it stays behind content but above stars */}
       {showHyperspace && (
-        <div className="absolute inset-0 z-5 overflow-hidden" style={{ pointerEvents: 'none' }}>
+        <div className="absolute inset-0 overflow-hidden" style={{ pointerEvents: 'none', zIndex: 3 }}>
           <div className="absolute inset-0 bg-hyperspace opacity-80">
             {hyperspaceStars.map((star, i) => (
               <motion.div
@@ -213,29 +213,29 @@ const HeroSection = () => {
       <motion.div 
         className="absolute bottom-0 left-[20%] w-72 h-72 bg-space-cyan/20 rounded-full filter blur-[100px]"
         animate={pulseGlowAnimation}
-        style={{ zIndex: 5 }}
+        style={{ zIndex: 4 }}
       ></motion.div>
       <motion.div 
         className="absolute top-1/4 right-[10%] w-80 h-80 bg-space-pink/10 rounded-full filter blur-[120px]"
         animate={pulseGlowAnimation}
-        style={{ animationDelay: '2s', zIndex: 5 }}
+        style={{ animationDelay: '2s', zIndex: 4 }}
       ></motion.div>
       <motion.div 
         className="absolute top-[60%] left-[5%] w-64 h-64 bg-space-purple/10 rounded-full filter blur-[100px]"
         animate={pulseGlowAnimation}
-        style={{ animationDelay: '3s', zIndex: 5 }}
+        style={{ animationDelay: '3s', zIndex: 4 }}
       ></motion.div>
 
       {/* Decorative elements - adding z-index to ensure they stay behind content */}
       <motion.div
         className="absolute top-[20%] right-[15%] w-32 h-32 border border-space-cyan/20 rounded-full"
         animate={rotateAnimation}
-        style={{ zIndex: 5 }}
+        style={{ zIndex: 4 }}
       />
       <motion.div
         className="absolute bottom-[30%] left-[10%] w-24 h-24 border border-space-pink/20 rounded-full"
         animate={rotateAnimation}
-        style={{ animationDirection: 'reverse', zIndex: 5 }}
+        style={{ animationDirection: 'reverse', zIndex: 4 }}
       />
     </div>
   );
