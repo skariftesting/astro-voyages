@@ -33,7 +33,7 @@ const HeroSection = () => {
     
     // Show hyperspace effect on initial load
     setShowHyperspace(true);
-    const timer = setTimeout(() => setShowHyperspace(false), 2000);
+    const timer = setTimeout(() => setShowHyperspace(false), 1500);
     
     return () => clearTimeout(timer);
   }, []);
@@ -43,9 +43,16 @@ const HeroSection = () => {
     // Ensure hyperspace is hidden after a delay
     const forceHideTimer = setTimeout(() => {
       setShowHyperspace(false);
-    }, 3000);
+    }, 2000);
     
     return () => clearTimeout(forceHideTimer);
+  }, []);
+  
+  // Additional cleanup effect to ensure hyperspace is hidden when component unmounts
+  useEffect(() => {
+    return () => {
+      setShowHyperspace(false);
+    };
   }, []);
 
   const handleBookingClick = (e: React.MouseEvent) => {
@@ -98,7 +105,7 @@ const HeroSection = () => {
       {/* Hyperspace effect */}
       {showHyperspace && (
         <div className="absolute inset-0 z-10 overflow-hidden">
-          <div className="absolute inset-0 bg-hyperspace">
+          <div className="absolute inset-0 bg-hyperspace opacity-80">
             {hyperspaceStars.map((star, i) => (
               <motion.div
                 key={i}
@@ -128,7 +135,7 @@ const HeroSection = () => {
       )}
       
       {/* Content */}
-      <div className="z-10 max-w-5xl mx-auto mt-16 md:mt-0">
+      <div className="z-20 max-w-5xl mx-auto mt-16 md:mt-0">
         <motion.div 
           className="animate-fade-in"
           initial={{ opacity: 0, y: 20 }}
