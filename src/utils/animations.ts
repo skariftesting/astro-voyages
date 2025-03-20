@@ -48,10 +48,16 @@ export const staggerContainerVariants = {
   }
 };
 
+// Changed to a function that returns a HOC function instead of using JSX directly
+import React from 'react';
+
 export const createPageTransition = (Component: React.ComponentType<any>) => {
-  return (props: any) => (
-    <div className="page-transition-enter-active">
-      <Component {...props} />
-    </div>
-  );
+  return function PageTransitionWrapper(props: any) {
+    // Using React.createElement instead of JSX syntax
+    return React.createElement(
+      'div',
+      { className: 'page-transition-enter-active' },
+      React.createElement(Component, props)
+    );
+  };
 };
