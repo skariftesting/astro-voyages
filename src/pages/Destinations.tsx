@@ -184,13 +184,13 @@ const Destinations = () => {
           {/* Hero section */}
           <div className="text-center mb-16 animate-slide-down">
             <span className="bg-space-cyan/10 text-space-cyan px-4 py-1.5 rounded-full text-xs md:text-sm font-medium inline-block mb-6">
-              EXPLORE THE COSMOS
+              STARPORT DUBAI DESTINATIONS
             </span>
             <h1 className="section-title">
-              Discover Our <span className="text-gradient">Space Destinations</span>
+              <span className="text-gradient">Beyond Earth, Beyond Limits</span>
             </h1>
             <p className="section-subtitle mx-auto">
-              From Earth orbit to the outer solar system, explore the wonders of space with our premium destinations.
+              From Earth orbit to the outer solar system, explore the wonders of space with our premium destinations. Only in Dubai.
             </p>
           </div>
           

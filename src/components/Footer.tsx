@@ -10,11 +10,11 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="inline-block">
               <h2 className="text-space-white font-display text-xl font-bold tracking-tight">
-                ASTRO<span className="text-space-cyan">VOYAGES</span>
+                STARPORT<span className="text-space-cyan">DUBAI</span>
               </h2>
             </Link>
             <p className="mt-4 text-space-gray text-sm leading-relaxed">
-              Pioneering the future of space tourism with exclusive destinations, luxury accommodations, and unforgettable experiences beyond Earth.
+              Beyond Earth, Beyond Limits only in Dubai
             </p>
             <div className="flex space-x-4 mt-6">
               <a href="#" className="text-space-light-gray hover:text-space-cyan transition-colors duration-300">
@@ -110,10 +110,10 @@ const Footer = () => {
 
         <div className="border-t border-space-light-blue/30 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-space-gray text-sm">
-            &copy; {new Date().getFullYear()} AstroVoyages. All rights reserved.
+            &copy; {new Date().getFullYear()} Starport Dubai. All rights reserved.
           </p>
           <p className="text-space-gray text-sm mt-4 md:mt-0">
-            Designed with ❤️ for space enthusiasts
+            Beyond Earth, Beyond Limits only in Dubai
           </p>
         </div>
       </div>

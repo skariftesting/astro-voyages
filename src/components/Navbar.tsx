@@ -48,7 +48,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link to="/" className="flex items-center">
             <span className="text-space-white font-display text-xl md:text-2xl font-bold tracking-tight">
-              ASTRO<span className="text-space-cyan">VOYAGES</span>
+              STARPORT<span className="text-space-cyan">DUBAI</span>
             </span>
           </Link>
 

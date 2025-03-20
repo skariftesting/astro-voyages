@@ -33,13 +33,13 @@ const HeroSection = () => {
       <div className="z-10 max-w-5xl mx-auto mt-16 md:mt-0">
         <div className="animate-fade-in">
           <span className="bg-space-cyan/10 text-space-cyan px-4 py-1.5 rounded-full text-xs md:text-sm font-medium inline-block mb-6">
-            EXPERIENCE THE COSMOS
+            STARPORT DUBAI
           </span>
         </div>
         
         <h1 className="section-title animate-slide-down" style={{ animationDelay: '0.2s' }}>
-          Your Journey to the <br />
-          <span className="text-gradient">Stars Begins Here</span>
+          <span className="text-gradient">Beyond Earth, Beyond Limits</span><br />
+          <span className="text-space-white font-light">only in Dubai</span>
         </h1>
         
         <p className="section-subtitle mx-auto animate-slide-down" style={{ animationDelay: '0.4s' }}>
