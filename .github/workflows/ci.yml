@@ -1,4 +1,7 @@
-name: CI/CD
+# This workflow has been reverted to avoid conflicts with Netlify deployment
+# The site is now deployed directly through Netlify as per the documentation
+
+name: CI
 
 on:
   push:
@@ -7,7 +10,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,8 +28,5 @@ jobs:
     - name: Lint
       run: npm run lint
     
-    - name: Build
-      run: npm run build
-      env:
-        VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-        VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+    # Build step removed to avoid conflicts with Netlify deployment
+    # Netlify will handle the build process as configured in netlify.toml
