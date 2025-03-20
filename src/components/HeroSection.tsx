@@ -103,9 +103,9 @@ const HeroSection = () => {
         />
       ))}
 
-      {/* Hyperspace effect */}
+      {/* Hyperspace effect - setting z-index to 5 to ensure it stays behind content */}
       {showHyperspace && (
-        <div className="absolute inset-0 z-10 overflow-hidden" style={{ pointerEvents: 'none' }}>
+        <div className="absolute inset-0 z-5 overflow-hidden" style={{ pointerEvents: 'none' }}>
           <div className="absolute inset-0 bg-hyperspace opacity-80">
             {hyperspaceStars.map((star, i) => (
               <motion.div
