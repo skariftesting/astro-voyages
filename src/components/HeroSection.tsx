@@ -19,9 +19,9 @@ import { useAuth } from '@/contexts/AuthContext';
 import { toast } from '@/hooks/use-toast';
 
 const HeroSection = () => {
-  const [stars, setStars] = useState<any[]>([]);
-  const [nebulae, setNebulae] = useState<any[]>([]);
-  const [hyperspaceStars, setHyperspaceStars] = useState<any[]>([]);
+  const [stars, setStars] = useState<ReturnType<typeof generateStars>>([]);
+  const [nebulae, setNebulae] = useState<ReturnType<typeof generateNebula>>([]);
+  const [hyperspaceStars, setHyperspaceStars] = useState<ReturnType<typeof generateHyperspaceStars>>([]);
   const [showHyperspace, setShowHyperspace] = useState(false);
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
