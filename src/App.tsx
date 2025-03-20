@@ -11,6 +11,7 @@ import Destinations from "./pages/Destinations";
 import Booking from "./pages/Booking";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/booking/:destinationId" element={<Booking />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
