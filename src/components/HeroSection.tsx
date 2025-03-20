@@ -69,8 +69,8 @@ const HeroSection = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 md:px-8 overflow-hidden">
-      {/* Stars background */}
-      <div className="star-field">
+      {/* Stars background - ensuring it stays at the back with z-index */}
+      <div className="star-field" style={{ zIndex: 1 }}>
         {stars.map((star, i) => (
           <div
             key={i}
@@ -85,7 +85,7 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Nebula effects */}
+      {/* Nebula effects - adding z-index to ensure proper layering */}
       {nebulae.map((nebula, i) => (
         <motion.div
           key={i}
@@ -97,6 +97,7 @@ const HeroSection = () => {
             height: `${nebula.size}px`,
             backgroundColor: nebula.color,
             filter: `blur(${nebula.blur}px)`,
+            zIndex: 2
           }}
           animate={scaleAnimation}
         />
@@ -208,31 +209,33 @@ const HeroSection = () => {
         </motion.div>
       </div>
       
-      {/* Enhanced Gradient orbs */}
+      {/* Enhanced Gradient orbs - adding z-index to ensure they stay behind content */}
       <motion.div 
         className="absolute bottom-0 left-[20%] w-72 h-72 bg-space-cyan/20 rounded-full filter blur-[100px]"
         animate={pulseGlowAnimation}
+        style={{ zIndex: 5 }}
       ></motion.div>
       <motion.div 
         className="absolute top-1/4 right-[10%] w-80 h-80 bg-space-pink/10 rounded-full filter blur-[120px]"
         animate={pulseGlowAnimation}
-        style={{ animationDelay: '2s' }}
+        style={{ animationDelay: '2s', zIndex: 5 }}
       ></motion.div>
       <motion.div 
         className="absolute top-[60%] left-[5%] w-64 h-64 bg-space-purple/10 rounded-full filter blur-[100px]"
         animate={pulseGlowAnimation}
-        style={{ animationDelay: '3s' }}
+        style={{ animationDelay: '3s', zIndex: 5 }}
       ></motion.div>
 
-      {/* Decorative elements */}
+      {/* Decorative elements - adding z-index to ensure they stay behind content */}
       <motion.div
         className="absolute top-[20%] right-[15%] w-32 h-32 border border-space-cyan/20 rounded-full"
         animate={rotateAnimation}
+        style={{ zIndex: 5 }}
       />
       <motion.div
         className="absolute bottom-[30%] left-[10%] w-24 h-24 border border-space-pink/20 rounded-full"
         animate={rotateAnimation}
-        style={{ animationDirection: 'reverse' }}
+        style={{ animationDirection: 'reverse', zIndex: 5 }}
       />
     </div>
   );
