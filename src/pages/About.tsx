@@ -1,24 +1,37 @@
 
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { generateStars } from '@/utils/animations';
 
-// Define the Star type based on the return type of generateStars
-type Star = {
-  x: number;
-  y: number;
-  size: 'small' | 'medium' | 'large';
-  animationDelay: string;
-  color: string;
-};
-
 const About = () => {
-  const [stars, setStars] = useState<Star[]>([]);
+  const [stars, setStars] = useState<{ x: number; y: number; size: 'small' | 'medium' | 'large'; animationDelay: string; color: string }[]>([]);
 
   useEffect(() => {
     setStars(generateStars(100));
   }, []);
+
+  const teamMembers = [
+    {
+      name: "Hazzaa AlMansoori",
+      role: "First Emirati astronaut in space",
+      bio: "Inspired by Hazzaa AlMansoori — the first Emirati to reach space — we bring you the chance to follow his path, from Earth to the stars.",
+      image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      name: "Sultan AlNeyadi",
+      role: "First Arab astronaut to perform a spacewalk",
+      bio: "Guided by the pioneering spirit of Sultan AlNeyadi, our platform pushes the boundaries of what's possible in commercial space travel.",
+      image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      name: "Nora AlMatrooshi",
+      role: "First female Arab astronaut",
+      bio: "Inspired by trailblazer Nora AlMatrooshi, we believe space belongs to everyone — and the journey starts right here from Dubai.",
+      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-space-blue overflow-hidden relative">
@@ -39,157 +52,151 @@ const About = () => {
       
       <Navbar />
       
-      <main className="pt-28 pb-20">
-        {/* Header */}
-        <section className="container mx-auto max-w-6xl px-4 mb-16">
-          <div className="text-center">
+      <main className="pt-24 px-4 pb-20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16 animate-fade-in">
             <span className="bg-space-purple/10 text-space-pink px-4 py-1.5 rounded-full text-xs md:text-sm font-medium inline-block mb-6">
               ABOUT US
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-space-white mb-6">
-              Pioneering <span className="text-gradient">Space Travel</span>
+            <h1 className="section-title">
+              Pioneering <span className="text-gradient">Space Tourism</span> from Dubai
             </h1>
-            <p className="text-space-gray max-w-2xl mx-auto">
-              Beyond the boundaries of Earth, we're opening up the cosmos to adventurous travelers seeking the ultimate journey.
+            <p className="section-subtitle mx-auto">
+              At Astro Voyages, we're making the dream of space travel a reality for everyone.
             </p>
           </div>
-        </section>
-        
-        {/* Mission Section */}
-        <section className="py-16 px-4">
-          <div className="container mx-auto max-w-6xl">
-            <div className="glass-panel p-8 md:p-12 rounded-2xl mb-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-display font-bold text-space-white mb-4">Our Mission</h2>
-                  <p className="text-space-light-gray mb-4">
-                    Founded in 2025, our mission is to make space travel accessible to adventurous civilians while maintaining the highest standards of safety and comfort.
-                  </p>
-                  <p className="text-space-light-gray">
-                    With a team of former aerospace engineers, astronauts, and visionary entrepreneurs, we've developed revolutionary spacecraft technology that makes interplanetary travel not just possible, but luxurious.
-                  </p>
-                </div>
-                <div className="relative h-64 md:h-80 overflow-hidden rounded-lg">
-                  <div className="absolute inset-0 bg-space-radial opacity-50"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-space-cyan/20 animate-pulse-glow flex items-center justify-center">
-                      <span className="text-space-cyan font-display font-bold text-2xl md:text-4xl">2025</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="glass-panel p-8 md:p-12 rounded-2xl">
-              <h2 className="text-2xl md:text-3xl font-display font-bold text-space-white mb-8 text-center">Our Values</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div className="text-center p-6 rounded-lg bg-space-light-blue/30 backdrop-blur-sm">
-                  <div className="w-16 h-16 rounded-full bg-space-cyan/20 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-space-cyan text-2xl">✧</span>
-                  </div>
-                  <h3 className="font-display font-bold text-space-white text-xl mb-2">Innovation</h3>
-                  <p className="text-space-light-gray">Pushing the boundaries of what's possible in space travel technology.</p>
-                </div>
-                
-                <div className="text-center p-6 rounded-lg bg-space-light-blue/30 backdrop-blur-sm">
-                  <div className="w-16 h-16 rounded-full bg-space-pink/20 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-space-pink text-2xl">✧</span>
-                  </div>
-                  <h3 className="font-display font-bold text-space-white text-xl mb-2">Safety</h3>
-                  <p className="text-space-light-gray">Rigorous testing and protocols to ensure our travelers return home safely.</p>
-                </div>
-                
-                <div className="text-center p-6 rounded-lg bg-space-light-blue/30 backdrop-blur-sm">
-                  <div className="w-16 h-16 rounded-full bg-space-purple/20 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-space-purple text-2xl">✧</span>
-                  </div>
-                  <h3 className="font-display font-bold text-space-white text-xl mb-2">Sustainability</h3>
-                  <p className="text-space-light-gray">Committed to environmentally responsible space exploration.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Team Section */}
-        <section className="py-16 px-4">
-          <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-space-white mb-4">Our Inspirations</h2>
-              <p className="text-space-light-gray max-w-2xl mx-auto">
-                Meet the pioneering astronauts whose achievements have inspired our mission to make space travel accessible.
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+            <div className="glass-panel p-8 order-2 lg:order-1">
+              <h2 className="text-2xl font-display font-bold text-space-white mb-6">Our Mission</h2>
+              <p className="text-space-white mb-4">
+                Founded in 2023 in Dubai, Astro Voyages is leading the charge in democratizing access to space. We believe that space tourism shouldn't be limited to billionaires and astronauts - it should be accessible to adventurers, dreamers, and explorers from all walks of life.
+              </p>
+              <p className="text-space-white mb-4">
+                With cutting-edge technology and partnerships with leading aerospace companies, we're making space travel safer, more affordable, and more accessible than ever before. Our mission is to open up the final frontier to a new generation of space travelers, starting right here in Dubai.
+              </p>
+              <p className="text-space-white">
+                From orbital luxury hotels to lunar bases and even Mars expeditions, we're constantly pushing the boundaries of what's possible in commercial space travel. Join us on this historic journey as we take humanity to the stars.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Team Member 1 - Hazzaa AlMansoori */}
-              <div className="glass-panel p-6 rounded-xl text-center relative overflow-hidden group hover:transform hover:scale-105 transition-all duration-500">
-                <div className="absolute inset-0 bg-space-radial opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
-                <div className="lightsaber blue absolute top-0 left-0 w-0 h-2 opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-700"></div>
-                
-                <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1629859258429-7436b13bd222?q=80&w=1000&auto=format&fit=crop" 
-                    alt="Hazzaa AlMansoori" 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-space-radial opacity-20 group-hover:opacity-0 transition-opacity duration-500"></div>
-                </div>
-                <h3 className="text-xl font-display font-bold text-space-white mb-1">Hazzaa AlMansoori</h3>
-                <p className="text-space-pink mb-3">First Emirati Astronaut</p>
-                <p className="text-space-light-gray text-sm">
-                  "Inspired by Hazzaa AlMansoori — the first Emirati to reach space — we bring you the chance to follow his path, from Earth to the stars."
-                </p>
-                
-                <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-space-cyan/5 group-hover:bg-space-cyan/10 blur-2xl transition-all duration-700"></div>
-              </div>
-              
-              {/* Team Member 2 - Sultan AlNeyadi */}
-              <div className="glass-panel p-6 rounded-xl text-center relative overflow-hidden group hover:transform hover:scale-105 transition-all duration-500">
-                <div className="absolute inset-0 bg-space-radial opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
-                <div className="lightsaber red absolute top-0 left-0 w-0 h-2 opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-700"></div>
-                
-                <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1633885278172-448eb2eeab27?q=80&w=1000&auto=format&fit=crop" 
-                    alt="Sultan AlNeyadi" 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-space-radial opacity-20 group-hover:opacity-0 transition-opacity duration-500"></div>
-                </div>
-                <h3 className="text-xl font-display font-bold text-space-white mb-1">Sultan AlNeyadi</h3>
-                <p className="text-space-pink mb-3">Pioneer Spacewalker</p>
-                <p className="text-space-light-gray text-sm">
-                  "Guided by the pioneering spirit of Sultan AlNeyadi, our platform pushes the boundaries of what's possible in commercial space travel."
-                </p>
-                
-                <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-space-pink/5 group-hover:bg-space-pink/10 blur-2xl transition-all duration-700"></div>
-              </div>
-              
-              {/* Team Member 3 - Nora AlMatrooshi */}
-              <div className="glass-panel p-6 rounded-xl text-center relative overflow-hidden group hover:transform hover:scale-105 transition-all duration-500">
-                <div className="absolute inset-0 bg-space-radial opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
-                <div className="lightsaber blue absolute top-0 left-0 w-0 h-2 opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-700"></div>
-                
-                <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden relative">
-                  <img 
-                    src="https://images.unsplash.com/photo-1599298241738-c8d56c0dd86b?q=80&w=1000&auto=format&fit=crop" 
-                    alt="Nora AlMatrooshi" 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-space-radial opacity-20 group-hover:opacity-0 transition-opacity duration-500"></div>
-                </div>
-                <h3 className="text-xl font-display font-bold text-space-white mb-1">Nora AlMatrooshi</h3>
-                <p className="text-space-pink mb-3">First Female Arab Astronaut</p>
-                <p className="text-space-light-gray text-sm">
-                  "Inspired by trailblazer Nora AlMatrooshi, we believe space belongs to everyone — and the journey starts right here from Dubai."
-                </p>
-                
-                <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-space-purple/5 group-hover:bg-space-purple/10 blur-2xl transition-all duration-700"></div>
-              </div>
+            <div className="glass-panel overflow-hidden h-80 lg:h-auto order-1 lg:order-2">
+              <img 
+                src="https://images.unsplash.com/photo-1517976487492-5750f3195933?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                alt="Space Station" 
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
-        </section>
+          
+          <div className="text-center mb-16">
+            <span className="bg-space-cyan/10 text-space-cyan px-4 py-1.5 rounded-full text-xs md:text-sm font-medium inline-block mb-6">
+              OUR TEAM
+            </span>
+            <h2 className="section-title">
+              Meet Our <span className="text-gradient">Space Pioneers</span>
+            </h2>
+            <p className="section-subtitle mx-auto">
+              Inspired by the UAE's greatest astronauts, our team is dedicated to making space accessible for all.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  delay: index * 0.2,
+                  duration: 0.8,
+                  type: "spring", 
+                  stiffness: 50 
+                }}
+                className="glass-panel hover:scale-105 transition-all duration-500 group perspective"
+              >
+                <div className="relative h-full flip-card-inner">
+                  <div className="group-hover:twinkle absolute inset-0 bg-gradient-to-br from-space-cyan/10 to-space-pink/10 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-500"></div>
+                  
+                  {/* Image with lightsaber-like glow on hover */}
+                  <div className="relative w-24 h-24 mx-auto mt-8 mb-6 overflow-hidden rounded-full">
+                    <div className="absolute inset-0 bg-space-cyan/40 blur-lg opacity-0 group-hover:opacity-70 transition-opacity duration-500 animate-glow-pulse"></div>
+                    <img 
+                      src={member.image} 
+                      alt={member.name} 
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                    <div className="absolute -inset-3 border-2 border-transparent rounded-full group-hover:border-space-cyan/30 group-hover:animate-slow-spin transition-all duration-500"></div>
+                  </div>
+                  
+                  <div className="p-6 text-center">
+                    <motion.h3 
+                      className="text-xl font-display font-bold text-space-white mb-1 group-hover:text-space-cyan transition-colors duration-300"
+                      animate={{ scale: [1, 1.02, 1] }}
+                      transition={{ 
+                        repeat: Infinity, 
+                        repeatType: "reverse", 
+                        duration: 2,
+                        delay: index * 0.3
+                      }}
+                    >
+                      {member.name}
+                    </motion.h3>
+                    <p className="text-space-pink mb-4 text-sm">{member.role}</p>
+                    <p className="text-space-gray text-sm">{member.bio}</p>
+                    
+                    {/* Star Wars inspired particle effects */}
+                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-12 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      {[...Array(20)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="absolute w-1 h-1 bg-space-cyan rounded-full"
+                          style={{
+                            left: `${Math.random() * 100}%`,
+                            bottom: '0%',
+                          }}
+                          animate={{
+                            y: [0, -100 - Math.random() * 50],
+                            opacity: [0, 0.8, 0],
+                            scale: [0.5, 1.2, 0.5]
+                          }}
+                          transition={{
+                            duration: 1.5 + Math.random() * 2,
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            delay: Math.random() * 2
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="glass-panel p-10 md:p-16 text-center rounded-2xl overflow-hidden relative">
+            <div className="absolute top-0 left-[20%] w-64 h-64 bg-space-cyan/10 rounded-full filter blur-[80px]"></div>
+            <div className="absolute bottom-0 right-[30%] w-64 h-64 bg-space-pink/10 rounded-full filter blur-[80px]"></div>
+            
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-space-white mb-4">Join Our Mission</h2>
+            <p className="text-space-white text-lg max-w-2xl mx-auto mb-8">
+              Be part of the journey as we make history with the first commercial space flights from Dubai. The stars are waiting.
+            </p>
+            <motion.div 
+              className="inline-block"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <a 
+                href="/booking" 
+                className="primary-button inline-block px-8 py-3 rounded-lg font-medium text-space-blue bg-space-cyan hover:bg-space-cyan/90 transition-colors duration-300"
+              >
+                Book Your Flight
+              </a>
+            </motion.div>
+          </div>
+        </div>
       </main>
       
       <Footer />

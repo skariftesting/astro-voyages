@@ -356,7 +356,7 @@ const BookingForm = ({
             </Button>
           )}
           <Button 
-            className={`${step === 3 ? 'bg-space-cyan text-space-blue' : 'bg-space-light-blue'} ml-auto`}
+            className={`${step === 3 ? 'bg-space-cyan hover:bg-space-cyan/90 text-space-blue font-semibold shadow-lg shadow-space-cyan/20' : 'bg-space-pink hover:bg-space-pink/90 text-white font-semibold shadow-md'} ml-auto transition-all duration-300 hover:scale-105`}
             onClick={handleContinue}
           >
             {step === 3 ? 'Confirm Booking' : 'Continue'}
