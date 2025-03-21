@@ -4,7 +4,7 @@ import { Facebook, Twitter, Instagram, Github, Linkedin, Mail } from 'lucide-rea
 
 const Footer = () => {
   return (
-    <footer className="bg-space-light-blue/20 backdrop-blur-xl mt-16 py-12 px-4 md:px-6 mx-4 md:mx-8 lg:mx-12 mb-4 md:mb-8 lg:mb-12 rounded-md border border-space-light-blue/10 shadow-lg">
+    <footer className="bg-space-light-blue mt-16 py-12 px-4 md:px-6 mx-4 md:mx-8 lg:mx-12 mb-4 md:mb-8 lg:mb-12 rounded-md border border-space-light-blue/10 shadow-lg">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           <div className="col-span-1 md:col-span-1">
