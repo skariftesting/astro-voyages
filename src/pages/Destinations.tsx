@@ -292,6 +292,9 @@ const Destinations = () => {
         </div>
       </main>
       
+      {/* Add a subtle gradient transition before the footer */}
+      <div className="h-24 bg-gradient-to-b from-transparent to-black/0"></div>
+      
       <Footer />
     </div>
   );
