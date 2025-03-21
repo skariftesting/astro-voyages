@@ -1,6 +1,3 @@
-# This workflow has been reverted to avoid conflicts with Netlify deployment
-# The site is now deployed directly through Netlify as per the documentation
-
 name: CI
 
 on:
@@ -12,6 +9,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+      VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
     steps:
     - uses: actions/checkout@v3
@@ -28,5 +28,12 @@ jobs:
     - name: Lint
       run: npm run lint
     
-    # Build step removed to avoid conflicts with Netlify deployment
-    # Netlify will handle the build process as configured in netlify.toml
+    - name: Build
+      run: npm run build
+      env:
+        VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+        VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+    
+    # Optional: Add a step to deploy if you're not using Netlify
+    # - name: Deploy
+    #   run: # your deployment command here
