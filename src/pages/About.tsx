@@ -115,47 +115,77 @@ const About = () => {
         <section className="py-16 px-4">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-space-white mb-4">Our Team</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-space-white mb-4">Our Inspirations</h2>
               <p className="text-space-light-gray max-w-2xl mx-auto">
-                Meet the visionaries, engineers, and astronauts who are making space travel a reality.
+                Meet the pioneering astronauts whose achievements have inspired our mission to make space travel accessible.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Team Member 1 */}
-              <div className="glass-panel p-6 rounded-xl text-center">
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center bg-space-radial">
-                    <span className="text-3xl text-space-cyan">AY</span>
-                  </div>
+              {/* Team Member 1 - Hazzaa AlMansoori */}
+              <div className="glass-panel p-6 rounded-xl text-center relative overflow-hidden group hover:transform hover:scale-105 transition-all duration-500">
+                <div className="absolute inset-0 bg-space-radial opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+                <div className="lightsaber blue absolute top-0 left-0 w-0 h-2 opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-700"></div>
+                
+                <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden relative">
+                  <img 
+                    src="https://images.unsplash.com/photo-1629859258429-7436b13bd222?q=80&w=1000&auto=format&fit=crop" 
+                    alt="Hazzaa AlMansoori" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-space-radial opacity-20 group-hover:opacity-0 transition-opacity duration-500"></div>
                 </div>
-                <h3 className="text-xl font-display font-bold text-space-white mb-1">Dr. Ada Yang</h3>
-                <p className="text-space-pink mb-3">Chief Spacecraft Engineer</p>
-                <p className="text-space-light-gray text-sm">Former NASA engineer with 15 years experience in propulsion systems.</p>
+                <h3 className="text-xl font-display font-bold text-space-white mb-1">Hazzaa AlMansoori</h3>
+                <p className="text-space-pink mb-3">First Emirati Astronaut</p>
+                <p className="text-space-light-gray text-sm">
+                  "Inspired by Hazzaa AlMansoori — the first Emirati to reach space — we bring you the chance to follow his path, from Earth to the stars."
+                </p>
+                
+                <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-space-cyan/5 group-hover:bg-space-cyan/10 blur-2xl transition-all duration-700"></div>
               </div>
               
-              {/* Team Member 2 */}
-              <div className="glass-panel p-6 rounded-xl text-center">
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center bg-space-radial">
-                    <span className="text-3xl text-space-cyan">MK</span>
-                  </div>
+              {/* Team Member 2 - Sultan AlNeyadi */}
+              <div className="glass-panel p-6 rounded-xl text-center relative overflow-hidden group hover:transform hover:scale-105 transition-all duration-500">
+                <div className="absolute inset-0 bg-space-radial opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+                <div className="lightsaber red absolute top-0 left-0 w-0 h-2 opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-700"></div>
+                
+                <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden relative">
+                  <img 
+                    src="https://images.unsplash.com/photo-1633885278172-448eb2eeab27?q=80&w=1000&auto=format&fit=crop" 
+                    alt="Sultan AlNeyadi" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-space-radial opacity-20 group-hover:opacity-0 transition-opacity duration-500"></div>
                 </div>
-                <h3 className="text-xl font-display font-bold text-space-white mb-1">Marcus Kennedy</h3>
-                <p className="text-space-pink mb-3">Chief Pilot</p>
-                <p className="text-space-light-gray text-sm">Former astronaut with 3 ISS missions and the first civilian lunar landing.</p>
+                <h3 className="text-xl font-display font-bold text-space-white mb-1">Sultan AlNeyadi</h3>
+                <p className="text-space-pink mb-3">Pioneer Spacewalker</p>
+                <p className="text-space-light-gray text-sm">
+                  "Guided by the pioneering spirit of Sultan AlNeyadi, our platform pushes the boundaries of what's possible in commercial space travel."
+                </p>
+                
+                <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-space-pink/5 group-hover:bg-space-pink/10 blur-2xl transition-all duration-700"></div>
               </div>
               
-              {/* Team Member 3 */}
-              <div className="glass-panel p-6 rounded-xl text-center">
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden">
-                  <div className="w-full h-full flex items-center justify-center bg-space-radial">
-                    <span className="text-3xl text-space-cyan">SL</span>
-                  </div>
+              {/* Team Member 3 - Nora AlMatrooshi */}
+              <div className="glass-panel p-6 rounded-xl text-center relative overflow-hidden group hover:transform hover:scale-105 transition-all duration-500">
+                <div className="absolute inset-0 bg-space-radial opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+                <div className="lightsaber blue absolute top-0 left-0 w-0 h-2 opacity-0 group-hover:opacity-100 group-hover:w-full transition-all duration-700"></div>
+                
+                <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden relative">
+                  <img 
+                    src="https://images.unsplash.com/photo-1599298241738-c8d56c0dd86b?q=80&w=1000&auto=format&fit=crop" 
+                    alt="Nora AlMatrooshi" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-space-radial opacity-20 group-hover:opacity-0 transition-opacity duration-500"></div>
                 </div>
-                <h3 className="text-xl font-display font-bold text-space-white mb-1">Dr. Sofia Lopez</h3>
-                <p className="text-space-pink mb-3">CEO & Founder</p>
-                <p className="text-space-light-gray text-sm">Visionary entrepreneur with a PhD in Astrophysics and a dream of accessible space travel.</p>
+                <h3 className="text-xl font-display font-bold text-space-white mb-1">Nora AlMatrooshi</h3>
+                <p className="text-space-pink mb-3">First Female Arab Astronaut</p>
+                <p className="text-space-light-gray text-sm">
+                  "Inspired by trailblazer Nora AlMatrooshi, we believe space belongs to everyone — and the journey starts right here from Dubai."
+                </p>
+                
+                <div className="absolute -bottom-20 -right-20 w-40 h-40 rounded-full bg-space-purple/5 group-hover:bg-space-purple/10 blur-2xl transition-all duration-700"></div>
               </div>
             </div>
           </div>
