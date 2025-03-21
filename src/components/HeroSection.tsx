@@ -176,7 +176,7 @@ const HeroSection = () => {
         >
           <Link to="/destinations">
             <div className="relative">
-              <Button className="primary-button w-60 sm:w-auto flex items-center gap-2 group" onClick={() => navigate('/destinations')}>
+              <Button className="primary-button w-60 sm:w-auto flex items-center gap-2 group">
                 Explore Destinations
                 <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
@@ -205,7 +205,7 @@ const HeroSection = () => {
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
           animate={floatAnimation}
         >
-          <ChevronDown className="text-space-white" size={28} />
+          <ChevronDown className="text-space-light-gray" size={28} />
         </motion.div>
       </div>
       

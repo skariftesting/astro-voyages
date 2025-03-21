@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Calendar as CalendarIcon, Users, CheckCircle2, ChevronRight } from 'lucide-react';
 import { format } from 'date-fns';
@@ -20,7 +19,6 @@ import {
 import { toast } from '@/hooks/use-toast';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { supabase } from '@/integrations/supabase/client';
 
 interface BookingFormProps {
   destinationId?: string;
@@ -37,8 +35,7 @@ const BookingForm = ({
   const [passengers, setPassengers] = useState('1');
   const [classType, setClassType] = useState(selectedClass || '');
   const [step, setStep] = useState(1);
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
-  const { isAuthenticated, user } = useAuth();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   
   const destinations = [
@@ -56,12 +53,7 @@ const BookingForm = ({
     { id: 'zero-gravity-vip', name: 'Zero-Gravity VIP', price: 45000 },
   ];
   
-  const handleDateSelect = (selectedDate: Date | undefined) => {
-    setDate(selectedDate);
-    setIsCalendarOpen(false); // Close calendar after selection
-  };
-
-  const handleContinue = async () => {
+  const handleContinue = () => {
     if (!isAuthenticated) {
       toast({
         title: "Authentication Required",
@@ -91,52 +83,19 @@ const BookingForm = ({
       }
       setStep(3);
     } else if (step === 3) {
-      try {
-        // Save the booking to Supabase
-        if (user) {
-          const bookingData = {
-            user_id: user.id,
-            destination_id: destinationId || 'none',
-            destination_name: destinationName,
-            departure_date: date?.toISOString(),
-            passengers: parseInt(passengers || '1'),
-            class_type: classType,
-            total_price: selectedClassPrice * parseInt(passengers || '1'),
-            booking_status: 'confirmed'
-          };
-          
-          console.log("Saving booking data:", bookingData);
-          
-          const { error } = await supabase
-            .from('bookings')
-            .insert([bookingData]);
-            
-          if (error) {
-            console.error("Error saving booking:", error);
-            toast({
-              title: "Booking Error",
-              description: error.message,
-              variant: "destructive",
-            });
-            return;
-          }
-        }
-        
-        toast({
-          title: "Success!",
-          description: "Your booking has been submitted. View it in your dashboard.",
-          variant: "default",
-        });
-        
-        navigate('/dashboard');
-      } catch (error) {
-        console.error("Booking submission error:", error);
-        toast({
-          title: "Error",
-          description: "An unexpected error occurred. Please try again.",
-          variant: "destructive",
-        });
-      }
+      toast({
+        title: "Success!",
+        description: "Your booking has been submitted.",
+        variant: "default",
+      });
+      
+      // Here would go the API call to submit the booking
+      console.log({
+        destinationId: destinationId || 'Not selected',
+        date,
+        passengers,
+        classType
+      });
     }
   };
   
@@ -144,7 +103,7 @@ const BookingForm = ({
   const totalPrice = selectedClassPrice * parseInt(passengers || '1');
   
   return (
-    <div className="glass-panel w-full max-w-md mx-auto bg-space-light-blue/80">
+    <div className="glass-panel w-full max-w-md mx-auto">
       <div className="p-6">
         <div className="flex justify-between mb-8">
           {[1, 2, 3].map((s) => (
@@ -179,10 +138,10 @@ const BookingForm = ({
               <div className="space-y-2">
                 <label className="text-sm text-space-light-gray">Destination</label>
                 <Select>
-                  <SelectTrigger className="bg-space-light-blue/60 border-space-light-blue/60 text-space-white">
+                  <SelectTrigger className="bg-space-light-blue/30 border-space-light-blue/30 text-space-white">
                     <SelectValue placeholder="Select a destination" />
                   </SelectTrigger>
-                  <SelectContent className="bg-space-blue border-space-light-blue/30 z-50">
+                  <SelectContent className="bg-space-blue border-space-light-blue/30">
                     {destinations.map((destination) => (
                       <SelectItem 
                         key={destination.id} 
@@ -200,7 +159,7 @@ const BookingForm = ({
             {destinationId && (
               <div className="space-y-2">
                 <label className="text-sm text-space-light-gray">Destination</label>
-                <div className="bg-space-light-blue/60 border border-space-light-blue/60 p-3 rounded-md text-space-white">
+                <div className="bg-space-light-blue/30 border border-space-light-blue/30 p-3 rounded-md text-space-white">
                   {destinationName}
                 </div>
               </div>
@@ -208,12 +167,12 @@ const BookingForm = ({
             
             <div className="space-y-2">
               <label className="text-sm text-space-light-gray">Departure Date</label>
-              <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
+              <Popover>
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
                     className={cn(
-                      "w-full border-space-light-blue/60 bg-space-light-blue/60 text-left font-normal",
+                      "w-full border-space-light-blue/30 bg-space-light-blue/30 text-left font-normal",
                       !date && "text-space-gray"
                     )}
                   >
@@ -221,11 +180,11 @@ const BookingForm = ({
                     {date ? format(date, "PPP") : <span>Select a date</span>}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-auto p-0 bg-space-blue border-space-light-blue/60 z-50">
+                <PopoverContent className="w-auto p-0 bg-space-blue border-space-light-blue/30">
                   <Calendar
                     mode="single"
                     selected={date}
-                    onSelect={handleDateSelect}
+                    onSelect={setDate}
                     initialFocus
                     disabled={(date) => date < new Date()}
                     className="p-3 pointer-events-auto"
@@ -237,10 +196,10 @@ const BookingForm = ({
             <div className="space-y-2">
               <label className="text-sm text-space-light-gray">Number of Passengers</label>
               <Select value={passengers} onValueChange={setPassengers}>
-                <SelectTrigger className="bg-space-light-blue/60 border-space-light-blue/60 text-space-white">
+                <SelectTrigger className="bg-space-light-blue/30 border-space-light-blue/30 text-space-white">
                   <SelectValue placeholder="Select number of passengers" />
                 </SelectTrigger>
-                <SelectContent className="bg-space-blue border-space-light-blue/30 z-50">
+                <SelectContent className="bg-space-blue border-space-light-blue/30">
                   {[1, 2, 3, 4, 5, 6].map((num) => (
                     <SelectItem 
                       key={num} 
@@ -267,7 +226,7 @@ const BookingForm = ({
                   className={`relative p-4 rounded-lg cursor-pointer transition-all duration-300 ${
                     classType === classOption.id || classType === classOption.name
                       ? 'bg-space-cyan/10 border border-space-cyan/30'
-                      : 'glass-panel hover:bg-space-light-blue/60'
+                      : 'glass-panel hover:bg-space-light-blue/40'
                   }`}
                   onClick={() => setClassType(classOption.id)}
                 >
@@ -303,29 +262,29 @@ const BookingForm = ({
             <h3 className="text-xl font-display font-bold text-space-white">Confirm Your Booking</h3>
             
             <div className="space-y-4">
-              <div className="glass-panel p-4 bg-space-light-blue/60">
+              <div className="glass-panel p-4">
                 <h4 className="text-sm text-space-light-gray">Destination</h4>
                 <p className="text-space-white font-medium">{destinationName}</p>
               </div>
               
-              <div className="glass-panel p-4 bg-space-light-blue/60">
+              <div className="glass-panel p-4">
                 <h4 className="text-sm text-space-light-gray">Departure Date</h4>
                 <p className="text-space-white font-medium">{date ? format(date, "PPP") : 'Not selected'}</p>
               </div>
               
-              <div className="glass-panel p-4 bg-space-light-blue/60">
+              <div className="glass-panel p-4">
                 <h4 className="text-sm text-space-light-gray">Passengers</h4>
                 <p className="text-space-white font-medium">{passengers}</p>
               </div>
               
-              <div className="glass-panel p-4 bg-space-light-blue/60">
+              <div className="glass-panel p-4">
                 <h4 className="text-sm text-space-light-gray">Class</h4>
                 <p className="text-space-white font-medium">
                   {classTypes.find(c => c.id === classType || c.name === classType)?.name || 'Not selected'}
                 </p>
               </div>
               
-              <div className="glass-panel p-4 bg-space-light-blue/60">
+              <div className="glass-panel p-4">
                 <div className="flex justify-between items-center">
                   <h4 className="text-sm text-space-light-gray">Price per person</h4>
                   <p className="text-space-white font-medium">د.إ {selectedClassPrice.toLocaleString()}</p>
@@ -334,7 +293,7 @@ const BookingForm = ({
                   <h4 className="text-sm text-space-light-gray">Number of passengers</h4>
                   <p className="text-space-white font-medium">× {passengers}</p>
                 </div>
-                <div className="border-t border-space-light-blue/60 my-2 pt-2">
+                <div className="border-t border-space-light-blue/30 my-2 pt-2">
                   <div className="flex justify-between items-center">
                     <h4 className="font-medium text-space-white">Total Price</h4>
                     <p className="text-space-cyan font-bold text-lg">د.إ {totalPrice.toLocaleString()}</p>
@@ -349,14 +308,14 @@ const BookingForm = ({
           {step > 1 && (
             <Button 
               variant="outline" 
-              className="border-space-light-blue/60 hover:bg-space-light-blue/40 text-space-white"
+              className="border-space-light-blue/30 hover:bg-space-light-blue/20 text-space-white"
               onClick={() => setStep(step - 1)}
             >
               Back
             </Button>
           )}
           <Button 
-            className={`${step === 3 ? 'bg-space-cyan hover:bg-space-cyan/90 text-space-blue font-semibold shadow-lg shadow-space-cyan/20' : 'bg-space-pink hover:bg-space-pink/90 text-white font-semibold shadow-md'} ml-auto transition-all duration-300 hover:scale-105`}
+            className={`${step === 3 ? 'bg-space-cyan text-space-blue' : 'bg-space-light-blue/50'} ml-auto`}
             onClick={handleContinue}
           >
             {step === 3 ? 'Confirm Booking' : 'Continue'}

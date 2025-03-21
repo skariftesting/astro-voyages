@@ -18,17 +18,6 @@ export const supabase = createClient<Database>(
       storage: localStorage,
       persistSession: true,
       autoRefreshToken: true,
-      detectSessionInUrl: true,
-    },
-    realtime: {
-      params: {
-        eventsPerSecond: 10
-      }
-    },
-    global: {
-      headers: {
-        'x-application-name': 'starport-dubai'
-      }
     }
   }
 );

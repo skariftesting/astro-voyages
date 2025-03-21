@@ -57,8 +57,23 @@ const Pricing = () => {
       </div>
       
       {/* Animated nebulas */}
-      <div className="absolute top-[20%] left-[10%] w-[400px] h-[400px] rounded-full bg-space-cyan/5 blur-3xl animate-pulse-glow"></div>
-      <div className="absolute bottom-[10%] right-[5%] w-[350px] h-[350px] rounded-full bg-space-pink/5 blur-3xl animate-pulse-glow" style={{ animationDelay: '2s' }}></div>
+      <div className="nebula" style={{
+        top: '20%',
+        left: '10%',
+        width: '400px',
+        height: '400px',
+        background: 'radial-gradient(circle, rgba(75, 213, 238, 0.1) 0%, rgba(75, 213, 238, 0) 70%)',
+        animation: 'nebulaPulse 15s ease-in-out infinite'
+      }}></div>
+      
+      <div className="nebula" style={{
+        bottom: '10%',
+        right: '5%',
+        width: '350px',
+        height: '350px',
+        background: 'radial-gradient(circle, rgba(255, 45, 45, 0.1) 0%, rgba(255, 45, 45, 0) 70%)',
+        animation: 'nebulaPulse 12s ease-in-out infinite 2s'
+      }}></div>
       
       <Navbar />
       
@@ -132,7 +147,7 @@ const Pricing = () => {
         {/* Custom Packages */}
         <section className="py-16 px-4 relative">
           <div className="container mx-auto max-w-6xl">
-            <div className="glass-panel p-10 md:p-16 text-center rounded-2xl overflow-hidden relative animate-scale-in group hover:transform hover:scale-[1.02] transition-all duration-500" style={{ animationDelay: '1.5s' }}>
+            <div className="glass-panel p-10 md:p-16 text-center rounded-2xl overflow-hidden relative animate-scale-in" style={{ animationDelay: '1.5s' }}>
               {/* Decorative elements */}
               <div className="absolute top-0 left-[20%] w-64 h-64 bg-space-cyan/10 rounded-full filter blur-[80px] animate-pulse-glow"></div>
               <div className="absolute bottom-0 right-[30%] w-64 h-64 bg-space-pink/10 rounded-full filter blur-[80px] animate-pulse-glow" style={{ animationDelay: '2s' }}></div>
@@ -142,15 +157,15 @@ const Pricing = () => {
               <div className="absolute w-1 h-1 bg-white rounded-full animate-star-twinkle" style={{ top: '70%', left: '80%', animationDelay: '1.2s' }}></div>
               <div className="absolute w-1 h-1 bg-white rounded-full animate-star-twinkle" style={{ top: '40%', left: '10%', animationDelay: '0.5s' }}></div>
               
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-space-white mb-4 relative z-10 group-hover:text-space-cyan transition-colors duration-300">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-space-white mb-4 relative z-10">
                 Looking for a Custom Experience?
               </h2>
-              <p className="text-space-light-gray text-lg max-w-2xl mx-auto mb-8 relative z-10 group-hover:text-white transition-colors duration-300">
+              <p className="text-space-light-gray text-lg max-w-2xl mx-auto mb-8 relative z-10">
                 Our space travel consultants can help design a bespoke journey 
                 tailored specifically to your preferences and requirements.
               </p>
               <div className="flex justify-center relative z-10">
-                <button className="bg-space-cyan text-space-blue hover:bg-space-cyan/90 px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-space-cyan/30 hover:scale-105 group-hover:animate-pulse-glow">
+                <button className="bg-space-cyan text-space-blue hover:bg-space-cyan/90 px-8 py-3 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-space-cyan/30 hover:scale-105">
                   Contact a Consultant
                 </button>
               </div>
