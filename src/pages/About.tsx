@@ -115,9 +115,9 @@ const About = () => {
         <section className="py-16 px-4">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-space-white mb-4">Our Inspirations</h2>
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-space-white mb-4">Our Team</h2>
               <p className="text-space-light-gray max-w-2xl mx-auto">
-                Meet the pioneering astronauts whose achievements have inspired our mission to make space travel accessible.
+                Meet the pioneering astronauts with their new mission to make space travel accessible and safe for you.
               </p>
             </div>
             
@@ -129,7 +129,7 @@ const About = () => {
                 
                 <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden relative">
                   <img 
-                    src="https://images.unsplash.com/photo-1629859258429-7436b13bd222?q=80&w=1000&auto=format&fit=crop" 
+                    src="https://www.mediaoffice.ae/-/media/2023/april/01-04/03/flag---hazzaa.jpg?h=2340&w=1713&hash=E493AF944A9A5DC61B03E84BDBE6A0FC" 
                     alt="Hazzaa AlMansoori" 
                     className="w-full h-full object-cover"
                   />
@@ -151,7 +151,7 @@ const About = () => {
                 
                 <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden relative">
                   <img 
-                    src="https://images.unsplash.com/photo-1633885278172-448eb2eeab27?q=80&w=1000&auto=format&fit=crop" 
+                    src="https://media.assettype.com/gulfnews%2Fimport%2F2023%2F09%2F18%2FSultan-Al-Neyadi-_18aa8a47867_large.jpg" 
                     alt="Sultan AlNeyadi" 
                     className="w-full h-full object-cover"
                   />
@@ -173,7 +173,7 @@ const About = () => {
                 
                 <div className="w-28 h-28 mx-auto mb-4 rounded-full bg-space-light-blue overflow-hidden relative">
                   <img 
-                    src="https://images.unsplash.com/photo-1599298241738-c8d56c0dd86b?q=80&w=1000&auto=format&fit=crop" 
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Astronaut_Nora_AlMatrooshi.jpg" 
                     alt="Nora AlMatrooshi" 
                     className="w-full h-full object-cover"
                   />
